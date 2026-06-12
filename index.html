@@ -41,9 +41,17 @@
 
     html {
       scroll-behavior: smooth;
-    }
+    }<button onclick="panicMode()" style="margin-top:10px;">
+  🚨 I JUST LANDED IN CHINA
+</button>
 
-    body {
+    body {<div id="onboarding">
+  <h2>GoChina</h2>
+  <p>Your survival system for studying in China</p>
+
+  <input id="nameInput" placeholder="Enter your name" />
+  <button onclick="startApp()">Start</button>
+</div>
       margin: 0;
       background: var(--bg);
       color: var(--text);
@@ -675,7 +683,13 @@
     </footer>
   </div>
 
-  <script>
+  <script>function startApp() {
+  const name = document.getElementById("nameInput").value;
+  localStorage.setItem("name", name);
+  document.getElementById("onboarding").style.display = "none";
+}function panicMode() {
+  alert("Welcome to China. Do this first:\n1. Get SIM\n2. Install WeChat\n3. Set up Alipay\n4. Find campus\n5. Contact university office");
+}
     const root = document.documentElement;
     const themeToggle = document.getElementById("themeToggle");
     const checkboxes = Array.from(document.querySelectorAll("#visaChecklist input[type='checkbox']"));
