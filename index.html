@@ -1,38 +1,47 @@
 <!DOCTYPE html>
-<!-- saved from url=(0105)file:///C:/Users/HP840G8/Documents/Codex/2026-06-12/build-a-simple-mobile-friendly-web/outputs/index.html -->
-<html lang="en" data-theme="dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>China Survival Companion</title>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>GoChina Student Companion</title>
   <style>
-    :root {index.html
+    :root {
       color-scheme: light;
-      --bg: #f7f5ef;
+      --bg: #f5f7fb;
       --surface: #ffffff;
-      --surface-soft: #f1eee6;
-      --text: #1f2523;
-      --muted: #66706c;
-      --line: #ddd8cc;
-      --accent: #c43d31;
-      --accent-strong: #9f2c23;
-      --accent-soft: #ffe2de;
-      --green: #247a55;
-      --shadow: 0 14px 34px rgba(31, 37, 35, 0.08);
+      --surface-2: #eef3f8;
+      --surface-3: #e7edf5;
+      --text: #16202a;
+      --muted: #667386;
+      --line: #d9e1eb;
+      --accent: #e43d30;
+      --accent-2: #0f8b8d;
+      --accent-3: #f6b73c;
+      --accent-soft: #ffe7e4;
+      --green: #16845b;
+      --blue: #3468d6;
+      --danger: #c62222;
+      --shadow: 0 20px 48px rgba(28, 44, 63, 0.12);
+      --nav-h: 76px;
     }
 
     [data-theme="dark"] {
       color-scheme: dark;
-      --bg: #141615;
-      --surface: #202422;
-      --surface-soft: #2a302d;
-      --text: #f2f0ea;
-      --muted: #b2bab5;
-      --line: #3a403d;
-      --accent: #ff7468;
-      --accent-strong: #ff9b92;
-      --accent-soft: #3a2221;
-      --green: #7bd7ab;
-      --shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+      --bg: #101418;
+      --surface: #171d23;
+      --surface-2: #202932;
+      --surface-3: #293440;
+      --text: #f3f7fb;
+      --muted: #a8b4c2;
+      --line: #34414f;
+      --accent: #ff675d;
+      --accent-2: #45c2c4;
+      --accent-3: #ffc35c;
+      --accent-soft: #3a2224;
+      --green: #58d39d;
+      --blue: #81a8ff;
+      --danger: #ff5a5a;
+      --shadow: 0 22px 54px rgba(0, 0, 0, 0.34);
     }
 
     * {
@@ -41,114 +50,36 @@
 
     html {
       scroll-behavior: smooth;
-    
+    }
 
-    body {<div id="onboarding">
-  <h2>GoChina</h2>
-  <p>Your survival system for studying in China</p>
-
-  <input id="nameInput" placeholder="Enter your name" />
-  <button onclick="startApp()">Start</button>
-</div>
+    body {
+      min-height: 100vh;
       margin: 0;
-      background: var(--bg);
+      padding: env(safe-area-inset-top) 0 calc(var(--nav-h) + env(safe-area-inset-bottom));
+      background:
+        radial-gradient(circle at 10% 0%, rgba(228, 61, 48, 0.12), transparent 28rem),
+        radial-gradient(circle at 90% 8%, rgba(15, 139, 141, 0.14), transparent 30rem),
+        var(--bg);
       color: var(--text);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.55;
+      line-height: 1.45;
     }
 
     button,
-    input {
+    input,
+    select {
       font: inherit;
     }
 
-    .app-shell {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 20px 0 42px;
+    button,
+    a,
+    input,
+    select {
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 10px 0 18px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-    }
-
-    .brand-mark {
-      display: grid;
-      width: 40px;
-      height: 40px;
-      flex: 0 0 40px;
-      place-items: center;
-      border-radius: 8px;
-      background: var(--accent);
-      color: white;
-      font-weight: 800;
-    }
-
-    .brand strong {
-      display: block;
-      font-size: 1rem;
-      line-height: 1.1;
-      white-space: nowrap;
-    }
-
-    .brand span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.84rem;
-      white-space: nowrap;
-    }
-
-    .theme-toggle {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      min-height: 42px;
-      padding: 0 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--surface);
-      color: var(--text);
+    button {
       cursor: pointer;
-      box-shadow: var(--shadow);
-    }
-
-    .theme-toggle svg {
-      width: 18px;
-      height: 18px;
-      flex: 0 0 18px;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      gap: 22px;
-      align-items: stretch;
-      margin: 10px 0 22px;
-    }
-
-    .intro {
-      display: flex;
-      min-height: 278px;
-      flex-direction: column;
-      justify-content: center;
-      padding: clamp(24px, 5vw, 46px);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background:
-        linear-gradient(135deg, rgba(196, 61, 49, 0.16), transparent 42%),
-        var(--surface);
-      box-shadow: var(--shadow);
     }
 
     h1,
@@ -158,104 +89,314 @@
       margin-top: 0;
     }
 
-    h1 {
-      max-width: 760px;
-      margin-bottom: 12px;
-      font-size: clamp(2.1rem, 7vw, 4.25rem);
-      line-height: 0.98;
-      letter-spacing: 0;
+    a {
+      color: inherit;
     }
 
-    .intro p {
-      max-width: 650px;
-      margin-bottom: 0;
-      color: var(--muted);
-      font-size: 1.04rem;
+    .app {
+      width: min(1120px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 18px 0 28px;
     }
 
-    .quick-panel {
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
       display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: space-between;
-      gap: 18px;
-      padding: 22px;
+      gap: 12px;
+      padding: 12px 0;
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: flex;
+      min-width: 0;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      place-items: center;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-3));
+      color: white;
+      font-weight: 900;
+      box-shadow: 0 14px 28px rgba(228, 61, 48, 0.28);
+    }
+
+    .brand strong,
+    .brand span {
+      display: block;
+      white-space: nowrap;
+    }
+
+    .brand strong {
+      font-size: 1rem;
+      line-height: 1.05;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .icon-button,
+    .nav-link,
+    .pill-button,
+    .primary-button {
       border: 1px solid var(--line);
-      border-radius: 8px;
+      border-radius: 12px;
       background: var(--surface);
+      color: var(--text);
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+    }
+
+    .icon-button {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
       box-shadow: var(--shadow);
     }
 
-    .progress-label {
+    .icon-button:hover,
+    .nav-link:hover,
+    .pill-button:hover,
+    .primary-button:hover {
+      transform: translateY(-1px);
+      border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
+    }
+
+    .icon {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 2;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(300px, 0.88fr);
+      gap: 18px;
+      margin: 8px 0 18px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: color-mix(in srgb, var(--surface) 94%, transparent);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 320px;
+      padding: clamp(24px, 5vw, 42px);
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--accent) 28%, transparent), transparent 46%),
+        linear-gradient(145deg, var(--surface), var(--surface-2));
+    }
+
+    .hero-card::after {
+      position: absolute;
+      right: -42px;
+      bottom: -44px;
+      width: 210px;
+      height: 210px;
+      border: 1px solid color-mix(in srgb, var(--accent-2) 50%, transparent);
+      border-radius: 50%;
+      content: "";
+      opacity: 0.34;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      max-width: 680px;
+      margin-bottom: 14px;
+      font-size: clamp(2.25rem, 8vw, 4.9rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .hero-card p {
+      max-width: 640px;
+      margin-bottom: 22px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .hero-actions,
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .primary-button,
+    .pill-button {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 14px;
+      text-decoration: none;
+    }
+
+    .primary-button {
+      border-color: transparent;
+      background: var(--accent);
+      color: white;
+      font-weight: 850;
+      box-shadow: 0 14px 30px color-mix(in srgb, var(--accent) 28%, transparent);
+    }
+
+    .pill-button {
+      background: var(--surface-2);
+      font-weight: 760;
+    }
+
+    .dashboard-card {
+      display: grid;
+      gap: 14px;
+      padding: 18px;
+    }
+
+    .profile-strip {
+      display: grid;
+      grid-template-columns: 58px minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+    }
+
+    .avatar {
+      display: grid;
+      width: 58px;
+      height: 58px;
+      place-items: center;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--accent-2), var(--blue));
+      color: white;
+      font-size: 1.35rem;
+      font-weight: 900;
+    }
+
+    .profile-strip h2 {
+      margin: 0 0 3px;
+      font-size: 1.3rem;
+      line-height: 1.12;
+    }
+
+    .profile-strip p,
+    .muted {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .metric {
+      min-height: 86px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface-2);
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 7px;
+      font-size: 1.35rem;
+      line-height: 1;
+    }
+
+    .progress {
+      display: grid;
+      gap: 7px;
+    }
+
+    .progress-top {
       display: flex;
       align-items: baseline;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 8px;
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
     }
 
-    .progress-label strong {
+    .progress-top strong {
       color: var(--text);
-      font-size: 1.35rem;
+      font-size: 1.05rem;
     }
 
     .progress-track {
       height: 12px;
       overflow: hidden;
-      border-radius: 999px;
-      background: var(--surface-soft);
       border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface-3);
     }
 
     .progress-fill {
       width: 0%;
       height: 100%;
       border-radius: inherit;
-      background: linear-gradient(90deg, var(--accent), var(--green));
-      transition: width 180ms ease;
-    }
-
-    .jump-links {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .jump-links a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 42px;
-      padding: 8px 10px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--surface-soft);
-      color: var(--text);
-      font-size: 0.9rem;
-      text-align: center;
-      text-decoration: none;
+      background: linear-gradient(90deg, var(--accent), var(--accent-3), var(--green));
+      transition: width 320ms ease;
     }
 
     .content-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.7fr);
-      gap: 22px;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
+      gap: 18px;
       align-items: start;
     }
 
-    .main-stack,
-    .side-stack {
+    .stack {
       display: grid;
-      gap: 22px;
+      gap: 18px;
     }
 
     section {
-      padding: clamp(18px, 4vw, 28px);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--surface);
-      box-shadow: var(--shadow);
+      scroll-margin-top: 86px;
+      padding: clamp(18px, 4vw, 26px);
     }
 
     .section-head {
@@ -263,37 +404,79 @@
       align-items: flex-start;
       justify-content: space-between;
       gap: 14px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
-    h2 {
-      margin-bottom: 4px;
-      font-size: clamp(1.35rem, 3vw, 1.75rem);
-      line-height: 1.18;
+    .section-head h2 {
+      margin: 0 0 4px;
+      font-size: clamp(1.28rem, 4vw, 1.72rem);
+      line-height: 1.1;
     }
 
-    .section-head p,
-    .muted {
+    .section-head p {
       margin-bottom: 0;
       color: var(--muted);
-      font-size: 0.94rem;
+      font-size: 0.92rem;
     }
 
     .mini-stat {
       display: inline-flex;
+      min-width: 70px;
+      min-height: 36px;
       align-items: center;
       justify-content: center;
-      min-width: 78px;
-      min-height: 38px;
       padding: 7px 10px;
-      border-radius: 8px;
+      border-radius: 12px;
       background: var(--accent-soft);
-      color: var(--accent-strong);
-      font-weight: 800;
+      color: var(--accent);
+      font-weight: 900;
       white-space: nowrap;
     }
 
-    .checklist {
+    .arrival-button {
+      position: relative;
+      display: grid;
+      width: 100%;
+      min-height: 96px;
+      place-items: center;
+      padding: 18px;
+      border: 0;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--danger), var(--accent), var(--accent-3));
+      color: white;
+      font-size: clamp(1.08rem, 5vw, 1.45rem);
+      font-weight: 950;
+      text-align: center;
+      box-shadow: 0 20px 44px color-mix(in srgb, var(--danger) 34%, transparent);
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+
+    .reveal {
+      display: none;
+      margin-top: 14px;
+    }
+
+    .reveal.is-open {
+      display: block;
+      animation: rise 260ms ease both;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .checklist,
+    .site-list,
+    .phrase-list,
+    .first-steps,
+    .budget-list,
+    .resource-list {
       display: grid;
       gap: 10px;
       margin: 0;
@@ -301,21 +484,29 @@
       list-style: none;
     }
 
+    .check-item,
+    .step-card,
+    .site-card,
+    .phrase-card,
+    .budget-card,
+    .resource-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface-2);
+    }
+
     .check-item {
       display: grid;
-      grid-template-columns: 24px minmax(0, 1fr);
-      gap: 12px;
+      grid-template-columns: 26px minmax(0, 1fr);
+      gap: 11px;
       align-items: start;
-      padding: 14px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--surface-soft);
+      padding: 13px;
     }
 
     .check-item input {
-      width: 20px;
-      height: 20px;
-      margin-top: 2px;
+      width: 21px;
+      height: 21px;
+      margin: 2px 0 0;
       accent-color: var(--accent);
     }
 
@@ -323,153 +514,454 @@
       cursor: pointer;
     }
 
-    .check-item span {
+    .check-item strong,
+    .step-card strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .check-item span,
+    .step-card span,
+    .resource-card span {
       display: block;
       color: var(--muted);
       font-size: 0.88rem;
     }
 
-    .check-item:has(input:checked) label {
+    .check-item:has(input:checked) label strong {
       color: var(--muted);
       text-decoration: line-through;
     }
 
-    .item-grid {
+    .stage-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .stage-tile {
+      position: relative;
+      min-height: 96px;
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface-2);
+      color: var(--text);
+      text-align: left;
+      overflow: hidden;
+    }
+
+    .stage-tile.is-done {
+      border-color: color-mix(in srgb, var(--green) 64%, var(--line));
+      background: color-mix(in srgb, var(--green) 13%, var(--surface-2));
+    }
+
+    .stage-tile span {
+      display: grid;
+      width: 32px;
+      height: 32px;
+      margin-bottom: 10px;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--surface);
+      color: var(--accent);
+      font-weight: 950;
+    }
+
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .badge {
+      min-height: 92px;
+      padding: 12px 8px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface-2);
+      color: var(--muted);
+      text-align: center;
+      filter: grayscale(1);
+      opacity: 0.64;
+    }
+
+    .badge.is-earned {
+      color: var(--text);
+      filter: none;
+      opacity: 1;
+      border-color: color-mix(in srgb, var(--accent-3) 70%, var(--line));
+      background: color-mix(in srgb, var(--accent-3) 14%, var(--surface-2));
+    }
+
+    .badge-icon {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      margin: 0 auto 8px;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--surface);
+      font-size: 1.2rem;
+      font-weight: 900;
+    }
+
+    .badge strong {
+      display: block;
+      font-size: 0.82rem;
+      line-height: 1.16;
+    }
+
+    .app-grid,
+    .packing-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+      gap: 10px;
     }
 
-    .info-item {
-      min-height: 116px;
-      padding: 14px;
+    .app-card,
+    .packing-card {
+      min-height: 118px;
+      padding: 13px;
       border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--surface-soft);
+      border-radius: 14px;
+      background: var(--surface-2);
     }
 
-    .info-item h3 {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .app-card h3,
+    .packing-card h3 {
       margin-bottom: 6px;
       font-size: 1rem;
     }
 
-    .tag {
-      display: inline-flex;
+    .app-card p,
+    .packing-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .phrase-card {
+      display: grid;
+      grid-template-columns: minmax(88px, 0.78fr) minmax(0, 1fr);
+      gap: 10px;
+      padding: 12px;
       align-items: center;
-      justify-content: center;
-      min-width: 26px;
-      height: 26px;
-      border-radius: 8px;
-      background: var(--accent);
-      color: white;
-      font-size: 0.78rem;
+    }
+
+    .phrase-card strong {
+      display: block;
+      font-size: 1.08rem;
+    }
+
+    .phrase-card span {
+      color: var(--accent-2);
+      font-size: 0.85rem;
+      font-weight: 850;
+    }
+
+    .phrase-card em {
+      display: block;
+      color: var(--muted);
+      font-style: normal;
+      font-size: 0.9rem;
+    }
+
+    .budget-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 118px;
+      gap: 10px;
+      align-items: center;
+      padding: 12px;
+    }
+
+    .budget-card label {
+      color: var(--muted);
+      font-size: 0.86rem;
       font-weight: 800;
     }
 
-    .info-item p,
-    .guide-list p {
-      margin-bottom: 0;
-      color: var(--muted);
-      font-size: 0.93rem;
-    }
-
-    .budget-list,
-    .guide-list {
-      display: grid;
-      gap: 12px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .budget-list li,
-    .guide-list li {
-      padding: 14px;
+    .budget-card input,
+    .form-field input,
+    .form-field select {
+      width: 100%;
+      min-height: 42px;
       border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--surface-soft);
+      border-radius: 12px;
+      background: var(--surface);
+      color: var(--text);
+      padding: 0 11px;
+      outline: none;
     }
 
-    .budget-list li {
+    .budget-card input:focus,
+    .form-field input:focus,
+    .form-field select:focus {
+      border-color: var(--accent-2);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-2) 18%, transparent);
+    }
+
+    .balance-box {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accent-2) 22%, var(--surface-2)), var(--surface-2));
+      border: 1px solid var(--line);
     }
 
-    .budget-list strong:last-child {
-      color: var(--accent-strong);
+    .balance-box strong {
+      font-size: 1.38rem;
+    }
+
+    .estimate-list {
+      display: grid;
+      gap: 8px;
+      margin: 0 0 14px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .estimate-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface-2);
+    }
+
+    .estimate-list span {
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 750;
+    }
+
+    .estimate-list strong {
+      color: var(--accent);
       white-space: nowrap;
     }
 
-    .guide-list strong {
+    .site-card,
+    .resource-card,
+    .step-card {
+      padding: 13px;
+    }
+
+    .site-card a {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 850;
+    }
+
+    .site-card span {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .category-title {
+      margin: 15px 0 8px;
+      color: var(--accent-2);
+      font-size: 0.82rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .sdju {
+      display: none;
+      border-color: color-mix(in srgb, var(--accent-2) 60%, var(--line));
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--accent-2) 18%, transparent), transparent 46%),
+        var(--surface);
+    }
+
+    .sdju.is-visible {
       display: block;
+      animation: rise 260ms ease both;
+    }
+
+    .form-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: none;
+      align-items: end;
+      justify-content: center;
+      padding: 14px;
+      background: rgba(7, 10, 13, 0.58);
+      backdrop-filter: blur(12px);
+    }
+
+    .form-overlay.is-open {
+      display: flex;
+    }
+
+    .onboarding {
+      width: min(620px, 100%);
+      max-height: min(88vh, 760px);
+      overflow: auto;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--surface);
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.34);
+      animation: sheetUp 260ms ease both;
+    }
+
+    @keyframes sheetUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .form-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .form-head h2 {
       margin-bottom: 4px;
     }
 
-    .note {
-      margin-top: 14px;
-      padding: 14px;
-      border-left: 4px solid var(--green);
-      border-radius: 8px;
-      background: var(--surface-soft);
-      color: var(--muted);
-      font-size: 0.93rem;
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 11px;
     }
 
-    .footer {
-      margin-top: 22px;
+    .form-field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .form-field label {
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.84rem;
+      font-weight: 850;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 60;
+      padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+      border-top: 1px solid var(--line);
+      background: color-mix(in srgb, var(--surface) 88%, transparent);
+      backdrop-filter: blur(18px);
+    }
+
+    .bottom-nav-inner {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      width: min(720px, 100%);
+      margin: 0 auto;
+      gap: 6px;
+    }
+
+    .nav-link {
+      display: grid;
+      min-height: 56px;
+      place-items: center;
+      gap: 3px;
+      padding: 6px 2px;
+      border-color: transparent;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.68rem;
+      font-weight: 820;
+      text-decoration: none;
+    }
+
+    .nav-link svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .nav-link.is-active {
+      background: var(--surface-2);
+      color: var(--accent);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: calc(var(--nav-h) + 14px + env(safe-area-inset-bottom));
+      z-index: 90;
+      display: none;
+      width: min(420px, calc(100% - 28px));
+      transform: translateX(-50%);
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: var(--shadow);
       text-align: center;
+      font-weight: 780;
     }
 
-    @media (max-width: 840px) {
+    .toast.is-open {
+      display: block;
+      animation: rise 220ms ease both;
+    }
+
+    @media (max-width: 880px) {
       .hero,
       .content-grid {
         grid-template-columns: 1fr;
       }
 
-      .quick-panel {
-        gap: 20px;
-      }
-
-      .side-stack {
-        grid-template-columns: 1fr;
+      .hero-card {
+        min-height: 286px;
       }
     }
 
-    @media (max-width: 620px) {
-      .app-shell {
+    @media (max-width: 640px) {
+      .app {
         width: min(100% - 20px, 1120px);
-        padding-top: 10px;
+        padding-top: 8px;
       }
 
-      .topbar {
-        align-items: flex-start;
-      }
-
-      .brand span,
-      .theme-toggle span {
+      .brand span {
         display: none;
       }
 
-      .theme-toggle {
-        width: 42px;
-        justify-content: center;
-        padding: 0;
+      .metric-grid,
+      .stage-grid,
+      .badge-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .intro {
-        min-height: 250px;
-      }
-
-      .jump-links,
-      .item-grid {
+      .app-grid,
+      .packing-grid,
+      .form-grid {
         grid-template-columns: 1fr;
+      }
+
+      .phrase-card,
+      .budget-card {
+        grid-template-columns: 1fr;
+      }
+
+      .estimate-list li {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
       }
 
       .section-head {
@@ -477,291 +969,624 @@
       }
 
       .mini-stat {
-        margin-top: 12px;
+        margin-top: 10px;
       }
 
-      .budget-list li {
-        align-items: flex-start;
-        flex-direction: column;
+      .bottom-nav {
+        padding-right: 8px;
+        padding-left: 8px;
+      }
+
+      .bottom-nav-inner {
+        gap: 2px;
+      }
+
+      .nav-link {
+        min-height: 54px;
+        border-radius: 10px;
+        font-size: 0.62rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="app-shell">
+  <div class="app">
     <header class="topbar">
-      <div class="brand" aria-label="China Survival Companion">
+      <div class="brand" aria-label="GoChina Student Companion">
         <div class="brand-mark">中</div>
-        <div><button onclick="panicMode()">
-  🚨 I JUST LANDED IN CHINA
-</button>
-          <strong>China Survival Companion</strong>
-          <span>Student move prep</span>
-        </div><button onclick="panicMode()">
-  🚨 I JUST LANDED IN CHINA
-</button>
+        <div>
+          <strong>GoChina</strong>
+          <span>Student arrival companion</span>
+        </div>
       </div>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
-          <path d="M12 3v2.2M12 18.8V21M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M3 12h2.2M18.8 12H21M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-          <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"></circle>
-        </svg>
-        <span>Light mode</span>
-      </button>
+      <div class="button-row">
+        <button class="icon-button" id="editProfile" type="button" aria-label="Edit profile">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        </button>
+        <button class="icon-button" id="themeToggle" type="button" aria-label="Switch theme">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2"/><path d="M12 19v2"/><path d="m5 5 1.4 1.4"/><path d="m17.6 17.6 1.4 1.4"/><path d="M3 12h2"/><path d="M19 12h2"/><path d="m5 19 1.4-1.4"/><path d="m17.6 6.4 1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg>
+        </button>
+      </div>
     </header>
 
     <main>
-      <div class="hero">
-        <section class="intro" aria-labelledby="pageTitle">
-          <h1 id="pageTitle">Prepare for China with less stress.</h1>
-          <p>A beginner-friendly companion for international students: visa steps, packing, essential apps, realistic budgeting, and the first things to handle after landing.</p>
+      <div class="hero" id="home">
+        <section class="panel hero-card" aria-labelledby="pageTitle">
+          <span class="eyebrow">Mobile-first China prep</span>
+          <h1 id="pageTitle">Your calm launchpad for studying in China.</h1>
+          <p>Plan the visa, pack smarter, land with confidence, track your journey, learn survival Chinese, and keep your budget clear from day one.</p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#arrival">Start Arrival Mode</a>
+            <button class="pill-button" id="startOnboarding" type="button">Set Up Profile</button>
+          </div>
         </section>
 
-        <aside class="quick-panel" aria-label="Quick progress and navigation">
-          <div>
-            <div class="progress-label">
-              <span>Visa checklist progress</span>
-              <strong id="progressText">0%</strong>
+        <aside class="panel dashboard-card" aria-label="Personal dashboard">
+          <div class="profile-strip">
+            <div class="avatar" id="avatar">G</div>
+            <div>
+              <h2 id="welcomeName">Welcome, future student</h2>
+              <p id="profileLine">Add your university, city, and arrival date.</p>
+            </div>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric">
+              <span>Arrival</span>
+              <strong id="countdown">Set date</strong>
+            </div>
+            <div class="metric">
+              <span>Journey</span>
+              <strong id="journeyMetric">0/6</strong>
+            </div>
+            <div class="metric">
+              <span>Badges</span>
+              <strong id="badgeMetric">0/4</strong>
+            </div>
+          </div>
+
+          <div class="progress">
+            <div class="progress-top">
+              <span>Overall progress</span>
+              <strong id="overallText">0%</strong>
             </div>
             <div class="progress-track" aria-hidden="true">
-              <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+              <div class="progress-fill" id="overallFill"></div>
             </div>
-            <p class="muted" id="progressDetail">0 of 6 completed</p>
           </div>
-          <nav class="jump-links" aria-label="Page sections">
-            <a href="file:///C:/Users/HP840G8/Documents/Codex/2026-06-12/build-a-simple-mobile-friendly-web/outputs/index.html#visa">Visa</a>
-            <a href="file:///C:/Users/HP840G8/Documents/Codex/2026-06-12/build-a-simple-mobile-friendly-web/outputs/index.html#packing">Packing</a>
-            <a href="file:///C:/Users/HP840G8/Documents/Codex/2026-06-12/build-a-simple-mobile-friendly-web/outputs/index.html#apps">Apps</a>
-            <a href="file:///C:/Users/HP840G8/Documents/Codex/2026-06-12/build-a-simple-mobile-friendly-web/outputs/index.html#budget">Budget</a>
-          </nav>
         </aside>
       </div>
 
       <div class="content-grid">
-        <div class="main-stack">
-          <section id="visa" aria-labelledby="visaTitle">
+        <div class="stack">
+          <section class="panel" id="arrival" aria-labelledby="arrivalTitle">
+            <div class="section-head">
+              <div>
+                <h2 id="arrivalTitle">Arrival Mode</h2>
+                <p>Tap this when you reach China and need the first actions in order.</p>
+              </div>
+            </div>
+            <button class="arrival-button" id="arrivalButton" type="button">I Just Landed In China</button>
+            <div class="reveal" id="arrivalSteps">
+              <ol class="first-steps">
+                <li class="step-card"><strong>SIM card</strong><span>Get a Chinese number at the airport, campus, or a nearby carrier store.</span></li>
+                <li class="step-card"><strong>WeChat</strong><span>Log in, join university groups, and save your international office contact.</span></li>
+                <li class="step-card"><strong>Alipay</strong><span>Add a supported card, enable transport, and test a small payment.</span></li>
+                <li class="step-card"><strong>University registration</strong><span>Bring your passport, admission notice, JW form, photos, and receipts.</span></li>
+                <li class="step-card"><strong>Dorm check-in</strong><span>Confirm room, deposit, bedding, Wi-Fi, curfew rules, and address in Chinese.</span></li>
+              </ol>
+            </div>
+          </section>
+
+          <section class="panel" id="visa" aria-labelledby="visaTitle">
             <div class="section-head">
               <div>
                 <h2 id="visaTitle">Visa Checklist</h2>
-                <p>Track the basics for a student visa application. Requirements can vary, so confirm details with your university and Chinese embassy or consulate.</p>
+                <p>Track core student visa tasks. Always confirm final requirements with your university and embassy or consulate.</p>
               </div>
               <span class="mini-stat" id="visaStat">0 / 6</span>
             </div>
-
             <ul class="checklist" id="visaChecklist">
-              <li class="check-item">
-                <input type="checkbox" id="visa-1">
-                <label for="visa-1"><strong>Receive admission documents</strong><span>Keep your admission notice and JW201 or JW202 form safe.</span></label>
-              </li>
-              <li class="check-item">
-                <input type="checkbox" id="visa-2">
-                <label for="visa-2"><strong>Check passport validity</strong><span>Make sure your passport is valid for your stay and has blank pages.</span></label>
-              </li>
-              <li class="check-item">
-                <input type="checkbox" id="visa-3">
-                <label for="visa-3"><strong>Complete the visa application form</strong><span>Use the details exactly as shown on your passport and school documents.</span></label>
-              </li>
-              <li class="check-item">
-                <input type="checkbox" id="visa-4">
-                <label for="visa-4"><strong>Prepare photo and supporting documents</strong><span>Include passport photos, health forms if needed, and copies of important pages.</span></label>
-              </li>
-              <li class="check-item">
-                <input type="checkbox" id="visa-5">
-                <label for="visa-5"><strong>Book and attend visa appointment</strong><span>Bring originals, copies, payment method, and appointment confirmation.</span></label>
-              </li>
-              <li class="check-item">
-                <input type="checkbox" id="visa-6">
-                <label for="visa-6"><strong>Plan residence permit steps</strong><span>After arrival, many students must convert the visa to a residence permit within the required window.</span></label>
-              </li>
+              <li class="check-item"><input type="checkbox" id="visa-1" data-track="visa"><label for="visa-1"><strong>Receive admission documents</strong><span>Keep your admission notice and JW201 or JW202 form safe.</span></label></li>
+              <li class="check-item"><input type="checkbox" id="visa-2" data-track="visa"><label for="visa-2"><strong>Check passport validity</strong><span>Make sure your passport is valid and has blank pages.</span></label></li>
+              <li class="check-item"><input type="checkbox" id="visa-3" data-track="visa"><label for="visa-3"><strong>Complete the visa form</strong><span>Use the details exactly as shown on your official documents.</span></label></li>
+              <li class="check-item"><input type="checkbox" id="visa-4" data-track="visa"><label for="visa-4"><strong>Prepare photos and copies</strong><span>Include passport photos, health forms if needed, and key document copies.</span></label></li>
+              <li class="check-item"><input type="checkbox" id="visa-5" data-track="visa"><label for="visa-5"><strong>Attend visa appointment</strong><span>Bring originals, copies, payment method, and appointment confirmation.</span></label></li>
+              <li class="check-item"><input type="checkbox" id="visa-6" data-track="visa"><label for="visa-6"><strong>Plan residence permit steps</strong><span>Ask your university what deadlines apply after arrival.</span></label></li>
             </ul>
           </section>
 
-          <section id="apps" aria-labelledby="appsTitle">
+          <section class="panel" id="journey" aria-labelledby="journeyTitle">
+            <div class="section-head">
+              <div>
+                <h2 id="journeyTitle">Journey Tracker</h2>
+                <p>Mark each stage as it becomes real. Your dashboard and badges update automatically.</p>
+              </div>
+            </div>
+            <div class="stage-grid" id="stageGrid">
+              <button class="stage-tile" type="button" data-stage="Visa"><span>1</span><strong>Visa</strong></button>
+              <button class="stage-tile" type="button" data-stage="Flight"><span>2</span><strong>Flight</strong></button>
+              <button class="stage-tile" type="button" data-stage="Packing"><span>3</span><strong>Packing</strong></button>
+              <button class="stage-tile" type="button" data-stage="Arrival"><span>4</span><strong>Arrival</strong></button>
+              <button class="stage-tile" type="button" data-stage="First Week"><span>5</span><strong>First Week</strong></button>
+              <button class="stage-tile" type="button" data-stage="First Month"><span>6</span><strong>First Month</strong></button>
+            </div>
+          </section>
+
+          <section class="panel" id="apps" aria-labelledby="appsTitle">
             <div class="section-head">
               <div>
                 <h2 id="appsTitle">Essential Apps</h2>
-                <p>Install these before departure where possible, then finish setup after you have a Chinese phone number or bank card.</p>
+                <p>Install before departure where possible, then finish setup with a Chinese number or bank card.</p>
               </div>
             </div>
+            <div class="app-grid">
+              <article class="app-card"><h3>WeChat</h3><p>Messaging, groups, mini programs, campus notices, and payments.</p></article>
+              <article class="app-card"><h3>Alipay</h3><p>Mobile payments, transport cards, bills, and many city services.</p></article>
+              <article class="app-card"><h3>Didi</h3><p>Ride-hailing for airport trips, late arrivals, and unfamiliar routes.</p></article>
+              <article class="app-card"><h3>Amap or Baidu Maps</h3><p>Local navigation, metro exits, buses, and campus-area searches.</p></article>
+              <article class="app-card"><h3>Translate</h3><p>Menus, forms, delivery calls, dorm notices, and quick conversations.</p></article>
+              <article class="app-card"><h3>Ele.me or Meituan</h3><p>Food delivery, local deals, restaurants, and everyday errands.</p></article>
+            </div>
+          </section>
 
-            <div class="item-grid">
-              <article class="info-item">
-                <h3><span class="tag">W</span>WeChat</h3>
-                <p>Messaging, group chats, mini programs, campus notices, payments, and daily life admin.</p>
-              </article>
-              <article class="info-item">
-                <h3><span class="tag">A</span>Alipay</h3>
-                <p>Mobile payments, transport cards, bills, food delivery links, and many city services.</p>
-              </article>
-              <article class="info-item">
-                <h3><span class="tag">D</span>Didi</h3>
-                <p>Ride-hailing for airport trips, late arrivals, and unfamiliar routes.</p>
-              </article>
-              <article class="info-item">
-                <h3><span class="tag">M</span>Maps</h3>
-                <p>Use Amap or Baidu Maps for accurate local navigation, metro exits, and bus routes.</p>
-              </article>
-              <article class="info-item">
-                <h3><span class="tag">T</span>Translate</h3>
-                <p>Keep a translation app ready for menus, forms, delivery calls, and campus offices.</p>
-              </article>
-              <article class="info-item">
-                <h3><span class="tag">E</span>Ele.me or Meituan</h3>
-                <p>Food delivery, local deals, restaurant discovery, and everyday errands.</p>
-              </article>
+          <section class="panel" id="chinese" aria-labelledby="chineseTitle">
+            <div class="section-head">
+              <div>
+                <h2 id="chineseTitle">Essential Chinese</h2>
+                <p>Short phrases for your first week: Chinese, pinyin, and English.</p>
+              </div>
+            </div>
+            <div class="phrase-list">
+              <article class="phrase-card"><div><strong>你好</strong><span>Ni hao</span></div><em>Hello</em></article>
+              <article class="phrase-card"><div><strong>谢谢</strong><span>Xie xie</span></div><em>Thank you</em></article>
+              <article class="phrase-card"><div><strong>多少钱？</strong><span>Duo shao qian?</span></div><em>How much is it?</em></article>
+              <article class="phrase-card"><div><strong>我要去学校</strong><span>Wo yao qu xue xiao</span></div><em>I want to go to the university</em></article>
+              <article class="phrase-card"><div><strong>请帮我</strong><span>Qing bang wo</span></div><em>Please help me</em></article>
+              <article class="phrase-card"><div><strong>我不会说中文</strong><span>Wo bu hui shuo Zhongwen</span></div><em>I cannot speak Chinese</em></article>
             </div>
           </section>
         </div>
 
-        <div class="side-stack">
-          <section id="packing" aria-labelledby="packingTitle">
+        <aside class="stack">
+          <section class="panel" id="profile" aria-labelledby="profileTitle">
+            <div class="section-head">
+              <div>
+                <h2 id="profileTitle">Profile</h2>
+                <p id="profileSummary">Your saved onboarding details appear here.</p>
+              </div>
+            </div>
+            <ul class="resource-list" id="profileList"></ul>
+          </section>
+
+          <section class="panel" id="badges" aria-labelledby="badgesTitle">
+            <div class="section-head">
+              <div>
+                <h2 id="badgesTitle">Achievement Badges</h2>
+                <p>Earn milestones as your China plan gets stronger.</p>
+              </div>
+            </div>
+            <div class="badge-grid" id="badgeGrid">
+              <div class="badge" data-badge="Visa Ready"><div class="badge-icon">V</div><strong>Visa Ready</strong></div>
+              <div class="badge" data-badge="Packed"><div class="badge-icon">P</div><strong>Packed</strong></div>
+              <div class="badge" data-badge="Landed"><div class="badge-icon">L</div><strong>Landed</strong></div>
+              <div class="badge" data-badge="China Ready"><div class="badge-icon">C</div><strong>China Ready</strong></div>
+            </div>
+          </section>
+
+          <section class="panel" id="packing" aria-labelledby="packingTitle">
             <div class="section-head">
               <div>
                 <h2 id="packingTitle">Packing List</h2>
-                <p>Prioritize documents, adapters, medication, and first-week comfort items.</p>
+                <p>Prioritize documents, adapters, medication, and first-week comfort.</p>
               </div>
             </div>
-
-            <div class="item-grid">
-              <article class="info-item">
-                <h3>Documents</h3>
-                <p>Passport, visa, admission notice, JW form, medical records, insurance, and digital backups.</p>
-              </article>
-              <article class="info-item">
-                <h3>Power</h3>
-                <p>Universal adapter, power bank, spare charging cables, and laptop charger.</p>
-              </article>
-              <article class="info-item">
-                <h3>Health</h3>
-                <p>Prescription medicine, basic pain relief, allergy meds, and any doctor notes.</p>
-              </article>
-              <article class="info-item">
-                <h3>Arrival Kit</h3>
-                <p>Comfortable shoes, toiletries, a towel, snacks, reusable bottle, and some local cash.</p>
-              </article>
+            <div class="packing-grid">
+              <article class="packing-card"><h3>Documents</h3><p>Passport, visa, admission notice, JW form, medical records, insurance, and digital backups.</p></article>
+              <article class="packing-card"><h3>Power</h3><p>Universal adapter, power bank, spare charging cables, and laptop charger.</p></article>
+              <article class="packing-card"><h3>Health</h3><p>Prescription medicine, basic pain relief, allergy medicine, and doctor notes.</p></article>
+              <article class="packing-card"><h3>Arrival Kit</h3><p>Comfortable shoes, toiletries, towel, snacks, reusable bottle, and some cash.</p></article>
             </div>
           </section>
 
-          <section id="budget" aria-labelledby="budgetTitle">
+          <section class="panel" id="budget" aria-labelledby="budgetTitle">
             <div class="section-head">
               <div>
-                <h2 id="budgetTitle">Budgeting Tips</h2>
-                <p>Typical student costs vary by city. Bigger cities usually cost more.</p>
+                <h2 id="budgetTitle">Budget Planner</h2>
+                <p>Use the estimated monthly needs as a guide, then enter your own numbers in RMB.</p>
               </div>
             </div>
-
-            <ul class="budget-list">
-              <li><strong>Dorm or shared room</strong><strong>¥800-3,000</strong></li>
-              <li><strong>Food</strong><strong>¥1,200-2,500</strong></li>
-              <li><strong>Transport</strong><strong>¥100-300</strong></li>
-              <li><strong>Phone and internet</strong><strong>¥50-150</strong></li>
-              <li><strong>Study and personal costs</strong><strong>¥500-1,500</strong></li>
+            <h3 class="category-title">Estimated monthly needs</h3>
+            <ul class="estimate-list" aria-label="Estimated monthly budget needs">
+              <li><span>Dorm or shared room</span><strong>¥800-3,000</strong></li>
+              <li><span>Food</span><strong>¥1,200-2,500</strong></li>
+              <li><span>Transport</span><strong>¥100-300</strong></li>
+              <li><span>Phone and internet</span><strong>¥50-150</strong></li>
+              <li><span>Study and personal costs</span><strong>¥500-1,500</strong></li>
             </ul>
-            <p class="note">Keep an emergency buffer for deposits, health checks, residence permit fees, bedding, and winter clothing if you arrive with light luggage.</p>
+            <h3 class="category-title">Your planner</h3>
+            <div class="budget-list">
+              <div class="budget-card"><label for="income">Income</label><input id="income" type="number" min="0" inputmode="decimal" placeholder="5000"></div>
+              <div class="budget-card"><label for="rent">Rent</label><input id="rent" type="number" min="0" inputmode="decimal" placeholder="1500"></div>
+              <div class="budget-card"><label for="food">Food</label><input id="food" type="number" min="0" inputmode="decimal" placeholder="1800"></div>
+              <div class="budget-card"><label for="transport">Transport</label><input id="transport" type="number" min="0" inputmode="decimal" placeholder="200"></div>
+            </div>
+            <div class="balance-box">
+              <span class="muted">Remaining balance</span>
+              <strong id="remaining">¥0</strong>
+            </div>
           </section>
 
-          <section id="first-week" aria-labelledby="firstWeekTitle">
+          <section class="panel sdju" id="sdju" aria-labelledby="sdjuTitle">
             <div class="section-head">
               <div>
-                <h2 id="firstWeekTitle">First-Week Guide</h2>
-                <p>Handle these early so life gets easier fast.</p>
+                <h2 id="sdjuTitle">SDJU Mode</h2>
+                <p>Shanghai Starter Pack for Shanghai Dianji University students.</p>
               </div>
             </div>
-
-            <ol class="guide-list">
-              <li><strong>Register at your university</strong><p>Bring your passport, admission documents, photos, and any fee receipts.</p></li>
-              <li><strong>Get a local SIM card</strong><p>A Chinese number helps with apps, deliveries, banking, and campus systems.</p></li>
-              <li><strong>Complete health or police registration steps</strong><p>Ask the international office what deadlines apply in your city.</p></li>
-              <li><strong>Set up payments</strong><p>Connect Alipay or WeChat Pay as soon as your bank card or supported international card works.</p></li>
-              <li><strong>Learn your daily route</strong><p>Save your dorm, campus office, nearest metro station, hospital, and grocery store on your map app.</p></li>
-            </ol>
+            <div class="resource-list">
+              <article class="resource-card"><strong>Shanghai Starter Pack</strong><span>Save your campus address in Chinese, nearest metro station, and international office contact.</span></article>
+              <article class="resource-card"><strong>Metro guide</strong><span>Use Alipay transport code, learn Line 16/18 connections, and screenshot your route before moving.</span></article>
+              <article class="resource-card"><strong>Budget tips</strong><span>Plan for bedding, health check, residence permit, SIM, transport card, and first grocery run.</span></article>
+              <article class="resource-card"><strong>SDJU resources</strong><span>Track registration notices, dorm rules, class groups, and campus card setup with your advisor.</span></article>
+            </div>
           </section>
-        </div>
+
+          <section class="panel" id="websites" aria-labelledby="websitesTitle">
+            <div class="section-head">
+              <div>
+                <h2 id="websitesTitle">Useful Websites</h2>
+                <p>University, language, transport, and China-life links.</p>
+              </div>
+            </div>
+            <h3 class="category-title">University</h3>
+            <div class="site-list">
+              <article class="site-card"><a href="https://www.china-admissions.com" target="_blank" rel="noopener">China Admissions <span>Open</span></a></article>
+              <article class="site-card"><a href="https://www.cucas.cn" target="_blank" rel="noopener">CUCAS <span>Open</span></a></article>
+              <article class="site-card"><a href="https://www.campuschina.org" target="_blank" rel="noopener">Campus China <span>Open</span></a></article>
+            </div>
+            <h3 class="category-title">Language</h3>
+            <div class="site-list">
+              <article class="site-card"><a href="https://www.pleco.com" target="_blank" rel="noopener">Pleco <span>Open</span></a></article>
+              <article class="site-card"><a href="https://www.duchinese.net" target="_blank" rel="noopener">Du Chinese <span>Open</span></a></article>
+              <article class="site-card"><a href="https://www.hellochinese.cc" target="_blank" rel="noopener">HelloChinese <span>Open</span></a></article>
+            </div>
+            <h3 class="category-title">Transport</h3>
+            <div class="site-list">
+              <article class="site-card"><a href="https://www.trip.com" target="_blank" rel="noopener">Trip.com <span>Open</span></a></article>
+              <article class="site-card"><a href="https://www.12306.cn" target="_blank" rel="noopener">12306 <span>Open</span></a></article>
+            </div>
+            <h3 class="category-title">China Life</h3>
+            <div class="site-list">
+              <article class="site-card"><a href="https://www.smartshanghai.com" target="_blank" rel="noopener">SmartShanghai <span>Open</span></a></article>
+              <article class="site-card"><a href="https://english.shanghai.gov.cn" target="_blank" rel="noopener">Shanghai Government <span>Open</span></a></article>
+            </div>
+          </section>
+        </aside>
       </div>
     </main>
-
-    <footer class="footer">
-      Built for calm arrivals, clear priorities, and fewer last-minute surprises.
-    </footer>
   </div>
 
-  <script>function startApp() {
-  const name = document.getElementById("nameInput").value;
-  localStorage.setItem("name", name);
-  document.getElementById("onboarding").style.display = "none";
-}function panicMode() {
-  alert("Welcome to China. Do this first:\n1. Get SIM\n2. Install WeChat\n3. Set up Alipay\n4. Find campus\n5. Contact university office");
-}
-    const root = document.documentElement;
-    const themeToggle = document.getElementById("themeToggle");
-    const checkboxes = Array.from(document.querySelectorAll("#visaChecklist input[type='checkbox']"));
-    const progressText = document.getElementById("progressText");
-    const progressDetail = document.getElementById("progressDetail");
-    const progressFill = document.getElementById("progressFill");
-    const visaStat = document.getElementById("visaStat");
-    const storageKey = "china-survival-companion";
+  <nav class="bottom-nav" aria-label="Primary navigation">
+    <div class="bottom-nav-inner">
+      <a class="nav-link is-active" href="#home" data-nav="home"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>Home</a>
+      <a class="nav-link" href="#visa" data-nav="visa"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10a2 2 0 0 1 2 2v16l-7-3-7 3V5a2 2 0 0 1 2-2Z"/><path d="M9 8h6"/><path d="M9 12h6"/></svg>Visa</a>
+      <a class="nav-link" href="#packing" data-nav="packing"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6V5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v1"/><rect x="4" y="6" width="16" height="15" rx="2"/><path d="M8 10h8"/></svg>Packing</a>
+      <a class="nav-link" href="#apps" data-nav="apps"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg>Apps</a>
+      <a class="nav-link" href="#chinese" data-nav="chinese"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16"/><path d="M12 5v14"/><path d="M7 9h10"/><path d="M8 19h8"/><path d="M8 9c.7 3 2 5 4 6 2-1 3.3-3 4-6"/></svg>Chinese</a>
+      <a class="nav-link" href="#profile" data-nav="profile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Profile</a>
+    </div>
+  </nav>
 
-    const savedState = JSON.parse(localStorage.getItem(storageKey) || "{}");
+  <div class="form-overlay" id="onboardingOverlay" role="dialog" aria-modal="true" aria-labelledby="onboardingTitle">
+    <form class="onboarding" id="onboardingForm">
+      <div class="form-head">
+        <div>
+          <h2 id="onboardingTitle">Set up GoChina</h2>
+          <p class="muted">Saved on this device with localStorage.</p>
+        </div>
+        <button class="icon-button" id="closeOnboarding" type="button" aria-label="Close profile setup">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <div class="form-grid">
+        <div class="form-field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required></div>
+        <div class="form-field"><label for="country">Country</label><input id="country" name="country" autocomplete="country-name"></div>
+        <div class="form-field full"><label for="university">University</label><input id="university" name="university" placeholder="Shanghai Dianji University"></div>
+        <div class="form-field"><label for="city">City</label><input id="city" name="city" placeholder="Shanghai"></div>
+        <div class="form-field"><label for="arrivalDate">Arrival date</label><input id="arrivalDate" name="arrivalDate" type="date"></div>
+        <div class="form-field full"><label for="chineseName">Chinese name</label><input id="chineseName" name="chineseName" placeholder="Optional"></div>
+      </div>
+      <div class="button-row" style="margin-top:16px">
+        <button class="primary-button" type="submit">Save Profile</button>
+        <button class="pill-button" type="button" id="clearProfile">Clear Saved Data</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const root = document.documentElement;
+    const storageKey = "gochina-mobile-app";
+    const defaultState = {
+      profile: {},
+      theme: "dark",
+      visa: [],
+      stages: [],
+      arrivalMode: false,
+      budget: { income: "", rent: "", food: "", transport: "" }
+    };
+
+    const els = {
+      themeToggle: document.getElementById("themeToggle"),
+      editProfile: document.getElementById("editProfile"),
+      startOnboarding: document.getElementById("startOnboarding"),
+      onboardingOverlay: document.getElementById("onboardingOverlay"),
+      onboardingForm: document.getElementById("onboardingForm"),
+      closeOnboarding: document.getElementById("closeOnboarding"),
+      clearProfile: document.getElementById("clearProfile"),
+      welcomeName: document.getElementById("welcomeName"),
+      profileLine: document.getElementById("profileLine"),
+      profileList: document.getElementById("profileList"),
+      profileSummary: document.getElementById("profileSummary"),
+      avatar: document.getElementById("avatar"),
+      countdown: document.getElementById("countdown"),
+      journeyMetric: document.getElementById("journeyMetric"),
+      badgeMetric: document.getElementById("badgeMetric"),
+      overallText: document.getElementById("overallText"),
+      overallFill: document.getElementById("overallFill"),
+      visaStat: document.getElementById("visaStat"),
+      arrivalButton: document.getElementById("arrivalButton"),
+      arrivalSteps: document.getElementById("arrivalSteps"),
+      remaining: document.getElementById("remaining"),
+      toast: document.getElementById("toast"),
+      sdju: document.getElementById("sdju")
+    };
+
+    const state = loadState();
+    const visaBoxes = Array.from(document.querySelectorAll("[data-track='visa']"));
+    const stageButtons = Array.from(document.querySelectorAll("[data-stage]"));
+    const budgetInputs = ["income", "rent", "food", "transport"].map((id) => document.getElementById(id));
+    const profileFields = ["name", "country", "university", "city", "arrivalDate", "chineseName"];
+
+    function loadState() {
+      try {
+        return { ...defaultState, ...JSON.parse(localStorage.getItem(storageKey) || "{}") };
+      } catch {
+        return { ...defaultState };
+      }
+    }
 
     function saveState() {
-      const checked = checkboxes.filter((box) => box.checked).map((box) => box.id);
-      localStorage.setItem(storageKey, JSON.stringify({
-        theme: root.dataset.theme || "light",
-        checked
-      }));
+      localStorage.setItem(storageKey, JSON.stringify(state));
     }
 
-    function updateProgress() {
-      const total = checkboxes.length;
-      const completed = checkboxes.filter((box) => box.checked).length;
-      const percent = Math.round((completed / total) * 100);
-
-      progressText.textContent = `${percent}%`;
-      progressDetail.textContent = `${completed} of ${total} completed`;
-      progressFill.style.width = `${percent}%`;
-      visaStat.textContent = `${completed} / ${total}`;
-      saveState();
+    function showToast(message) {
+      els.toast.textContent = message;
+      els.toast.classList.add("is-open");
+      window.clearTimeout(showToast.timer);
+      showToast.timer = window.setTimeout(() => els.toast.classList.remove("is-open"), 2200);
     }
 
-    function setTheme(theme) {
-      root.dataset.theme = theme;
-      const isDark = theme === "dark";
-      themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
-      themeToggle.querySelector("span").textContent = isDark ? "Light mode" : "Dark mode";
-      saveState();
+    function formatCurrency(value) {
+      return `¥${Math.round(value || 0).toLocaleString()}`;
     }
 
-    if (savedState.theme) {
-      setTheme(savedState.theme);
-    } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setTheme("dark");
-    } else {
-      setTheme("light");
+    function escapeHtml(value) {
+      return String(value || "").replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#39;"
+      }[char]));
     }
 
-    if (Array.isArray(savedState.checked)) {
-      checkboxes.forEach((box) => {
-        box.checked = savedState.checked.includes(box.id);
+    function daysUntil(dateValue) {
+      if (!dateValue) return null;
+      const today = new Date();
+      const date = new Date(`${dateValue}T00:00:00`);
+      today.setHours(0, 0, 0, 0);
+      return Math.ceil((date - today) / 86400000);
+    }
+
+    function isSdju(profile) {
+      const uni = (profile.university || "").toLowerCase();
+      return uni.includes("sdju") || uni.includes("shanghai dianji university");
+    }
+
+    function earnedBadges() {
+      const visaReady = visaBoxes.length > 0 && state.visa.length === visaBoxes.length;
+      const packed = state.stages.includes("Packing");
+      const landed = state.arrivalMode || state.stages.includes("Arrival");
+      const chinaReady = ["Visa", "Flight", "Packing", "Arrival", "First Week", "First Month"].every((stage) => state.stages.includes(stage));
+      return {
+        "Visa Ready": visaReady,
+        "Packed": packed,
+        "Landed": landed,
+        "China Ready": chinaReady
+      };
+    }
+
+    function renderProfile() {
+      const profile = state.profile || {};
+      const name = profile.name || "future student";
+      const initial = (profile.chineseName || profile.name || "G").trim().charAt(0).toUpperCase();
+      els.avatar.textContent = initial || "G";
+      els.welcomeName.textContent = `Welcome, ${name}`;
+      els.profileLine.textContent = [profile.university, profile.city, profile.country].filter(Boolean).join(" · ") || "Add your university, city, and arrival date.";
+
+      const details = [
+        ["Name", profile.name],
+        ["Country", profile.country],
+        ["University", profile.university],
+        ["City", profile.city],
+        ["Arrival date", profile.arrivalDate],
+        ["Chinese name", profile.chineseName]
+      ];
+      els.profileList.innerHTML = details.map(([label, value]) => (
+        `<li class="resource-card"><strong>${label}</strong><span>${escapeHtml(value || "Not set")}</span></li>`
+      )).join("");
+      els.profileSummary.textContent = profile.name ? "Your onboarding details are saved on this device." : "Set up your details to unlock a personalized dashboard.";
+
+      const days = daysUntil(profile.arrivalDate);
+      if (days === null) els.countdown.textContent = "Set date";
+      else if (days > 1) els.countdown.textContent = `${days} days`;
+      else if (days === 1) els.countdown.textContent = "Tomorrow";
+      else if (days === 0) els.countdown.textContent = "Today";
+      else els.countdown.textContent = "Arrived";
+
+      els.sdju.classList.toggle("is-visible", isSdju(profile));
+    }
+
+    function renderVisa() {
+      visaBoxes.forEach((box) => {
+        box.checked = state.visa.includes(box.id);
       });
+      els.visaStat.textContent = `${state.visa.length} / ${visaBoxes.length}`;
     }
 
-    checkboxes.forEach((box) => box.addEventListener("change", updateProgress));
-    themeToggle.addEventListener("click", () => {
-      setTheme(root.dataset.theme === "dark" ? "light" : "dark");
+    function renderStages() {
+      stageButtons.forEach((button) => {
+        button.classList.toggle("is-done", state.stages.includes(button.dataset.stage));
+      });
+      els.journeyMetric.textContent = `${state.stages.length}/6`;
+    }
+
+    function renderArrival() {
+      els.arrivalSteps.classList.toggle("is-open", state.arrivalMode);
+    }
+
+    function renderBudget() {
+      budgetInputs.forEach((input) => {
+        input.value = state.budget[input.id] || "";
+      });
+      const income = Number(state.budget.income || 0);
+      const costs = Number(state.budget.rent || 0) + Number(state.budget.food || 0) + Number(state.budget.transport || 0);
+      const remaining = income - costs;
+      els.remaining.textContent = formatCurrency(remaining);
+      els.remaining.style.color = remaining < 0 ? "var(--danger)" : "var(--green)";
+    }
+
+    function renderBadgesAndProgress() {
+      const badges = earnedBadges();
+      const earnedCount = Object.values(badges).filter(Boolean).length;
+      document.querySelectorAll("[data-badge]").forEach((badge) => {
+        badge.classList.toggle("is-earned", Boolean(badges[badge.dataset.badge]));
+      });
+      els.badgeMetric.textContent = `${earnedCount}/4`;
+
+      const totalTasks = visaBoxes.length + stageButtons.length + 4 + 1;
+      const doneTasks = state.visa.length + state.stages.length + earnedCount + (state.profile.name ? 1 : 0);
+      const percent = Math.round((doneTasks / totalTasks) * 100);
+      els.overallText.textContent = `${percent}%`;
+      els.overallFill.style.width = `${percent}%`;
+    }
+
+    function renderAll() {
+      root.dataset.theme = state.theme || "dark";
+      renderProfile();
+      renderVisa();
+      renderStages();
+      renderArrival();
+      renderBudget();
+      renderBadgesAndProgress();
+    }
+
+    function openOnboarding() {
+      profileFields.forEach((field) => {
+        document.getElementById(field).value = state.profile[field] || "";
+      });
+      els.onboardingOverlay.classList.add("is-open");
+      window.setTimeout(() => document.getElementById("name").focus(), 60);
+    }
+
+    function closeOnboarding() {
+      els.onboardingOverlay.classList.remove("is-open");
+    }
+
+    els.themeToggle.addEventListener("click", () => {
+      state.theme = root.dataset.theme === "dark" ? "light" : "dark";
+      saveState();
+      renderAll();
     });
 
-    updateProgress();
-  </script>
-function panicMode() {
-  alert(
-    "WELCOME TO CHINA 🇨🇳\n\n" +
-    "Do this first:\n" +
-    "1. Get SIM card\n" +
-    "2. Install WeChat\n" +
-    "3. Set up Alipay\n" +
-    "4. Find campus\n" +
-    "5. Contact international office"
-  );
-}
+    els.startOnboarding.addEventListener("click", openOnboarding);
+    els.editProfile.addEventListener("click", openOnboarding);
+    els.closeOnboarding.addEventListener("click", closeOnboarding);
+    els.onboardingOverlay.addEventListener("click", (event) => {
+      if (event.target === els.onboardingOverlay) closeOnboarding();
+    });
 
-</body></html>
+    els.onboardingForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      state.profile = Object.fromEntries(profileFields.map((field) => [field, document.getElementById(field).value.trim()]));
+      saveState();
+      closeOnboarding();
+      renderAll();
+      showToast("Profile saved");
+    });
+
+    els.clearProfile.addEventListener("click", () => {
+      localStorage.removeItem(storageKey);
+      Object.assign(state, JSON.parse(JSON.stringify(defaultState)));
+      closeOnboarding();
+      renderAll();
+      showToast("Saved data cleared");
+    });
+
+    visaBoxes.forEach((box) => {
+      box.addEventListener("change", () => {
+        state.visa = visaBoxes.filter((item) => item.checked).map((item) => item.id);
+        saveState();
+        renderAll();
+      });
+    });
+
+    stageButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const stage = button.dataset.stage;
+        state.stages = state.stages.includes(stage)
+          ? state.stages.filter((item) => item !== stage)
+          : [...state.stages, stage];
+        saveState();
+        renderAll();
+      });
+    });
+
+    els.arrivalButton.addEventListener("click", () => {
+      state.arrivalMode = !state.arrivalMode;
+      if (state.arrivalMode && !state.stages.includes("Arrival")) {
+        state.stages = [...state.stages, "Arrival"];
+      }
+      saveState();
+      renderAll();
+      showToast(state.arrivalMode ? "Arrival Mode is on" : "Arrival Mode is hidden");
+    });
+
+    budgetInputs.forEach((input) => {
+      input.addEventListener("input", () => {
+        state.budget[input.id] = input.value;
+        saveState();
+        renderBudget();
+      });
+    });
+
+    const navLinks = Array.from(document.querySelectorAll(".nav-link"));
+    const navTargets = navLinks.map((link) => document.querySelector(link.getAttribute("href"))).filter(Boolean);
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      navLinks.forEach((link) => link.classList.toggle("is-active", link.getAttribute("href") === `#${visible.target.id}`));
+    }, { rootMargin: "-42% 0px -52% 0px", threshold: [0, 0.2, 0.5] });
+    navTargets.forEach((target) => observer.observe(target));
+
+    if (!state.profile.name) {
+      window.setTimeout(openOnboarding, 500);
+    }
+
+    renderAll();
+  </script>
+</body>
+</html>
